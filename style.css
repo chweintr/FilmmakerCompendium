@@ -10,17 +10,23 @@
     }
 }
 
-html {
+html, body {
     scroll-behavior: smooth;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 
 body {
     background-color: #2e0249;
     color: #ffffff;
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Header styles */
@@ -64,7 +70,8 @@ nav a {
 
 nav a:hover {
     background-color: rgba(255, 105, 180, 0.3);
-    transform: translateY(-2px);
+    transform: translateY(-1px); /* Reduced from -2px to minimize bounce */
+    backface-visibility: hidden; /* Prevent flickering */
 }
 
 /* Search bar styles */
@@ -75,6 +82,7 @@ nav a:hover {
 
 #search-input {
     width: 50%;
+    max-width: 600px; /* Add max-width to prevent excessive expansion */
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
     border: none;
@@ -82,7 +90,9 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     outline: none;
-    transition: all 0.3s ease;
+    transition: width 0.3s ease-in-out;
+    will-change: width; /* Optimize animation performance */
+    transform: translateZ(0); /* Force GPU acceleration */
 }
 
 #search-input::placeholder {
@@ -90,9 +100,10 @@ nav a:hover {
 }
 
 #search-input:focus {
+    width: 55%;
+    max-width: 650px; /* Add max-width to prevent excessive expansion */
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 0 15px rgba(255, 105, 180, 0.3);
-    width: 55%;
 }
 
 /* Filter buttons improvements */
@@ -198,11 +209,13 @@ section h2 {
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    transform: translateZ(0); /* Force GPU acceleration */
+    backface-visibility: hidden;
+    will-change: transform; /* Optimize animation performance */
 }
 
 .card:hover {
-    transform: translateY(-5px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px) translateZ(0);
 }
 
 .card img {
@@ -411,4 +424,10 @@ footer {
     background: linear-gradient(90deg, #4b007d 25%, #6b009d 50%, #4b007d 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
+}
+
+/* Prevent content jump on modal open */
+body.modal-open {
+    overflow: hidden;
+    padding-right: 15px; /* Compensate for scrollbar disappearance */
 }

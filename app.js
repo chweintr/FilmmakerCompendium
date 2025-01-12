@@ -593,6 +593,60 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterBtns = document.querySelectorAll(".filter-btn");
     const sections = document.querySelectorAll("section");
 
+    // Function to show modal
+    function showModal(content) {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        // Add content to modal...
+        document.body.appendChild(modal);
+        
+        // Prevent content jump when modal opens
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = scrollbarWidth + 'px';
+        document.body.classList.add('modal-open');
+        
+        // Fade in modal
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+        });
+        
+        // Close modal on click outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal(modal);
+            }
+        });
+    }
+
+    // Function to close modal
+    function closeModal(modal) {
+        modal.style.opacity = '0';
+        setTimeout(() => {
+            document.body.removeChild(modal);
+            document.body.style.paddingRight = '';
+            document.body.classList.remove('modal-open');
+        }, 300);
+    }
+
+    // Debounce search input to prevent rapid updates
+    function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+
+    // Add debounced search handler
+    searchInput.addEventListener('input', debounce((e) => {
+        const searchTerm = e.target.value.toLowerCase();
+        performSearch(searchTerm);
+    }, 150));
+
     // Filter functionality
     filterContainer.addEventListener("click", (e) => {
         const btn = e.target.closest(".filter-btn");
@@ -713,3 +767,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initial state
     document.querySelector('[data-filter="all"]').click();
 });
+
+function performSearch(searchTerm) {
+    // Perform search logic here
+    console.log(`Searching for: ${searchTerm}`);
+}
