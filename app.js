@@ -3,61 +3,87 @@ console.log("Filmmaker's Compendium is ready!");
 // Content data with comprehensive categories and detailed information
 const content = [
     {
-        category: "Lens Types",
-        items: [
-            {
-                name: "Anamorphic Lens",
-                description: "Creates distinctive cinematic widescreen shots with signature horizontal lens flares and oval bokeh.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["cinematic", "widescreen", "horizontal flares", "oval bokeh"],
-                details: "Originally developed for cinema to create wide aspect ratios without losing resolution. Popular in films like Blade Runner and Inception. Creates a unique 2.39:1 aspect ratio with characteristic horizontal lens flares."
-            },
-            {
-                name: "Wide-Angle Lens",
-                description: "Captures expansive scenes with a broader field of view, perfect for landscapes and architectural shots.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["landscape", "wide", "spacious", "architecture"],
-                details: "Typically ranges from 16-35mm. Great for environmental portraits and establishing shots. Can create dramatic perspective effects when used close to subjects."
-            },
-            {
-                name: "Telephoto Lens",
-                description: "Brings distant subjects closer with a compressed perspective, ideal for wildlife and sports.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["compression", "distance", "sports", "wildlife"],
-                details: "Ranges from 70mm to 600mm and beyond. Creates beautiful background blur and compression. Essential for wildlife documentaries and sports coverage."
-            },
-            {
-                name: "Macro Lens",
-                description: "Enables extreme close-up photography with 1:1 magnification or greater.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["close-up", "detail", "macro", "nature"],
-                details: "Reveals tiny details invisible to the naked eye. Popular in nature documentaries and product photography. Requires careful focus due to extremely shallow depth of field."
-            }
-        ]
-    },
-    {
         category: "Shot Types",
         items: [
             {
-                name: "Extreme Wide Shot",
-                description: "Shows the subject from a great distance, emphasizing their surroundings and environment.",
+                name: "Extreme Wide Shot (EWS)",
+                description: "Shows the subject from a great distance, emphasizing their environment and surroundings.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["establishing", "landscape", "environment"],
-                details: "Often used as establishing shots in films. Shows scale and context. Common in epic films and nature documentaries."
+                tags: ["establishing", "landscape", "environment", "epic"],
+                details: "Used to establish location, show scale, or create a sense of isolation. Common in epic films and nature documentaries.",
+                example: "Extreme wide shot of a lone warrior standing atop a mountain peak at sunrise."
             },
             {
-                name: "Medium Shot",
-                description: "Frames the subject from waist up, balancing detail and context.",
+                name: "Wide Shot (WS)",
+                description: "Shows the entire subject and their immediate surroundings, providing context and spatial relationships.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["dialogue", "waist-up", "conversation"],
-                details: "The workhouse of dialogue scenes. Shows body language while maintaining intimacy. Perfect for interviews and conversations."
+                tags: ["establishing", "context", "full-body"],
+                details: "Essential for establishing scenes, showing character relationships, or capturing action sequences.",
+                example: "Wide shot of a medieval marketplace bustling with activity."
             },
             {
-                name: "Over-the-Shoulder",
-                description: "Films from behind one character's shoulder while facing the other character.",
+                name: "Medium Wide Shot (MWS)",
+                description: "Shows the subject from the knees up, balancing environment and character detail.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["balanced", "three-quarter", "conversation"],
+                details: "Great for group conversations, showing body language, or capturing movement while maintaining context.",
+                example: "Medium wide shot of three friends walking down a neon-lit street at night."
+            },
+            {
+                name: "Medium Shot (MS)",
+                description: "Frames the subject from waist up, focusing on upper body language and facial expressions.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["dialogue", "waist-up", "expression"],
+                details: "The workhorse of dialogue scenes. Perfect for interviews, conversations, and emotional moments.",
+                example: "Medium shot of a detective interrogating a suspect across a table."
+            },
+            {
+                name: "Medium Close-Up (MCU)",
+                description: "Shows the subject from chest up, emphasizing facial expressions while retaining some body language.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["expression", "emotion", "intimate"],
+                details: "Ideal for emotional scenes, important dialogue, or reaction shots.",
+                example: "Medium close-up of a character realizing a devastating truth."
+            },
+            {
+                name: "Close-Up (CU)",
+                description: "Tightly frames the subject's face, focusing on emotional expression and intimate details.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["emotion", "intimate", "face"],
+                details: "Creates emotional connection, shows character reactions, or highlights important details.",
+                example: "Close-up of tears welling up in a character's eyes."
+            },
+            {
+                name: "Extreme Close-Up (ECU)",
+                description: "Shows extreme detail of a subject, often a specific feature or object.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["detail", "intensity", "dramatic"],
+                details: "Creates intensity, shows minute details, or emphasizes specific elements.",
+                example: "Extreme close-up of a ticking pocket watch in trembling hands."
+            },
+            {
+                name: "Dutch Angle",
+                description: "Tilts the camera off its horizontal axis to create unease or tension.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["tension", "dramatic", "psychological"],
+                details: "Used to convey psychological tension, disorientation, or dramatic moments.",
+                example: "Dutch angle shot of a character running through a twisted corridor."
+            },
+            {
+                name: "Over-the-Shoulder (OTS)",
+                description: "Films from behind one character's shoulder while facing another character.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["dialogue", "perspective", "conversation"],
-                details: "Creates depth and maintains screen direction in dialogue scenes. Helps establish eyelines and spatial relationships between characters."
+                details: "Standard for dialogue scenes, establishes spatial relationships and eyelines.",
+                example: "Over-the-shoulder shot during an intense negotiation scene."
+            },
+            {
+                name: "Point of View (POV)",
+                description: "Shows the scene directly from a character's perspective.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["perspective", "subjective", "immersive"],
+                details: "Creates immersion, shows character perspective, or builds tension.",
+                example: "POV shot of exploring a dark cave with a flickering flashlight."
             }
         ]
     },
@@ -66,24 +92,128 @@ const content = [
         items: [
             {
                 name: "Dolly Shot",
-                description: "Camera moves smoothly along tracks or rails, creating fluid motion.",
+                description: "Camera moves smoothly along tracks, creating fluid horizontal movement.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["movement", "tracking", "smooth"],
-                details: "Creates smooth, cinematic movement. Can be used for dramatic reveals or to follow action. Famous example: Goodfellas Copacabana scene."
+                tags: ["movement", "smooth", "tracking"],
+                details: "Creates smooth, cinematic movement. Perfect for following action or revealing scenes.",
+                example: "Dolly shot following a character walking through a transforming set."
+            },
+            {
+                name: "Dolly Zoom",
+                description: "Simultaneously dollies and zooms in opposite directions, creating a vertigo effect.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["vertigo", "psychological", "dramatic"],
+                details: "Also known as the Vertigo effect. Creates disorientation or emotional impact.",
+                example: "Dolly zoom on a character realizing they're standing on a skyscraper edge."
+            },
+            {
+                name: "Tracking Shot",
+                description: "Camera follows alongside moving subjects, maintaining a consistent distance.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["following", "movement", "parallel"],
+                details: "Great for following action, revealing locations, or maintaining character focus.",
+                example: "Tracking shot following athletes running a race."
             },
             {
                 name: "Steadicam Shot",
-                description: "Stabilized camera movement that follows action smoothly while operator walks.",
+                description: "Smooth, handheld camera movement using a stabilizing system.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["stabilized", "following", "movement"],
-                details: "Invented by Garrett Brown. Revolutionary for mobile camera work. Famous in The Shining's hallway scenes."
+                tags: ["smooth", "handheld", "flowing"],
+                details: "Creates fluid movement while maintaining stability. Perfect for complex moving shots.",
+                example: "Steadicam shot following a character through a crowded nightclub."
             },
             {
                 name: "Crane Shot",
-                description: "Camera moves vertically, horizontally, or in an arc using a crane or jib.",
+                description: "Camera moves vertically and horizontally using a mechanical crane.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["vertical", "sweeping", "dramatic"],
-                details: "Creates dramatic reveals and establishes scale. Often used in musical numbers and epic scenes. Classic example: Gone with the Wind's Atlanta depot scene."
+                details: "Creates dramatic reveals, establishes location, or shows scale.",
+                example: "Crane shot rising from street level to reveal an entire cityscape."
+            },
+            {
+                name: "Pan",
+                description: "Camera rotates horizontally from a fixed position.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["horizontal", "rotation", "reveal"],
+                details: "Used for revealing information, following action, or connecting subjects.",
+                example: "Pan across a room full of suspicious characters during a murder mystery."
+            },
+            {
+                name: "Tilt",
+                description: "Camera rotates vertically from a fixed position.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["vertical", "rotation", "reveal"],
+                details: "Shows height or depth, reveals information, or creates dramatic effect.",
+                example: "Tilt up a massive ancient temple from ground to sky."
+            },
+            {
+                name: "Whip Pan",
+                description: "Extremely fast pan that blurs the image.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["fast", "transition", "energy"],
+                details: "Creates energy, transitions between scenes, or shows rapid movement.",
+                example: "Whip pan between multiple conversations at a party."
+            }
+        ]
+    },
+    {
+        category: "Lens Types",
+        items: [
+            {
+                name: "Wide-Angle Lens",
+                description: "Captures a broader field of view with exaggerated perspective.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["wide", "landscape", "architecture"],
+                details: "Great for landscapes, architecture, or creating dramatic perspective effects.",
+                example: "Wide-angle shot of a gothic cathedral's interior with dramatic leading lines."
+            },
+            {
+                name: "Telephoto Lens",
+                description: "Magnifies distant subjects with compressed perspective.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["compression", "distance", "isolation"],
+                details: "Ideal for wildlife, sports, or creating compressed perspective effects.",
+                example: "Telephoto shot of a lion stalking its prey in the savanna."
+            },
+            {
+                name: "Prime Lens",
+                description: "Fixed focal length lens with superior optical quality.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["sharp", "fixed", "quality"],
+                details: "Provides excellent image quality and low-light performance.",
+                example: "Portrait using a 85mm prime lens with beautiful bokeh."
+            },
+            {
+                name: "Zoom Lens",
+                description: "Variable focal length lens offering flexibility.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["versatile", "variable", "flexible"],
+                details: "Allows quick focal length changes without switching lenses.",
+                example: "Documentary shot zooming from wide to close-up during action."
+            },
+            {
+                name: "Macro Lens",
+                description: "Specialized for extreme close-up photography.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["close-up", "detail", "microscopic"],
+                details: "Reveals tiny details invisible to the naked eye.",
+                example: "Macro shot of morning dew on a spider's web."
+            },
+            {
+                name: "Fisheye Lens",
+                description: "Ultra-wide lens creating strong circular distortion.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["distortion", "ultra-wide", "circular"],
+                details: "Creates unique perspective distortion effects.",
+                example: "Fisheye shot of a skateboarder mid-trick in a halfpipe."
+            },
+            {
+                name: "Tilt-Shift Lens",
+                description: "Specialized lens for perspective control and selective focus.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["perspective", "miniature", "architectural"],
+                details: "Controls perspective in architectural shots or creates miniature effects.",
+                example: "Tilt-shift cityscape making buildings look like toys."
             }
         ]
     },
@@ -91,25 +221,68 @@ const content = [
         category: "Lighting Techniques",
         items: [
             {
+                name: "Three-Point Lighting",
+                description: "Standard setup using key, fill, and back lights.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["standard", "professional", "balanced"],
+                details: "Creates professional, well-balanced lighting for most situations.",
+                example: "Three-point lighting setup for a corporate interview."
+            },
+            {
                 name: "Rembrandt Lighting",
-                description: "Creates a triangle of light on the subject's cheek, named after the painter's style.",
+                description: "Creates dramatic shadows with a triangle of light under the eye.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["dramatic", "portrait", "shadow"],
-                details: "Classic portrait lighting technique. Creates depth and drama. One side of face is lit with triangle of light under eye on shadow side."
+                details: "Classic portrait lighting technique creating depth and drama.",
+                example: "Rembrandt lighting on a character in period costume."
             },
             {
                 name: "Split Lighting",
-                description: "Illuminates half the face while leaving the other in shadow.",
+                description: "Lights one half of the face, leaving the other in shadow.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["dramatic", "contrast", "noir"],
-                details: "Creates dramatic contrast. Popular in film noir. Emphasizes texture and form. Great for mysterious or villainous characters."
+                details: "Creates dramatic contrast, popular in film noir.",
+                example: "Split lighting on a mysterious character in shadows."
             },
             {
                 name: "Butterfly Lighting",
                 description: "Creates a butterfly-shaped shadow under the nose.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["glamour", "beauty", "portrait"],
-                details: "Classic Hollywood glamour lighting. Flattering for most faces. Light positioned directly above camera, pointing down at subject."
+                details: "Classic Hollywood glamour lighting technique.",
+                example: "Butterfly lighting for a vintage Hollywood portrait."
+            },
+            {
+                name: "Natural Lighting",
+                description: "Uses available light from windows or outdoors.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["natural", "soft", "realistic"],
+                details: "Creates realistic, motivated lighting situations.",
+                example: "Natural window light illuminating a morning scene."
+            },
+            {
+                name: "Low-Key Lighting",
+                description: "Creates dark, shadowy scenes with high contrast.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["dark", "moody", "contrast"],
+                details: "Perfect for noir, horror, or dramatic scenes.",
+                example: "Low-key lighting in a detective's office at night."
+            },
+            {
+                name: "High-Key Lighting",
+                description: "Creates bright, low-contrast scenes with minimal shadows.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["bright", "cheerful", "clean"],
+                details: "Used in commercials, comedies, or upbeat scenes.",
+                example: "High-key lighting in a bright, modern kitchen commercial."
+            },
+            {
+                name: "Practical Lighting",
+                description: "Uses visible light sources within the scene.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["realistic", "motivated", "diegetic"],
+                details: "Creates realistic lighting motivated by visible sources.",
+                example: "Scene lit only by practical lamps and computer screens."
             }
         ]
     }
@@ -153,6 +326,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <div class="expanded-content">
                             <p>${item.details}</p>
+                            ${item.example ? `<p>Example: ${item.example}</p>` : ''}
                         </div>
                     </div>
                 `).join("")}
@@ -213,7 +387,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let results = [];
                 content.forEach(category => {
                     category.items.forEach(item => {
-                        const searchText = `${item.name} ${item.description} ${item.tags.join(" ")} ${category.category} ${item.details}`.toLowerCase();
+                        const searchText = `${item.name} ${item.description} ${item.tags.join(" ")} ${category.category} ${item.details} ${item.example || ''}`.toLowerCase();
                         if (searchText.includes(query)) {
                             results.push({ ...item, category: category.category });
                         }
@@ -234,6 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="expanded-content">
                                 <p>${result.details}</p>
+                                ${result.example ? `<p>Example: ${result.example}</p>` : ''}
                             </div>
                         `;
                         searchResults.appendChild(resultCard);
