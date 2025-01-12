@@ -305,6 +305,50 @@ section h2 {
     z-index: 1;
 }
 
+/* Details section styles */
+.details-section {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.details-section h4 {
+    color: #ff69b4;
+    margin: 1rem 0 0.5rem;
+    font-size: 1.1rem;
+}
+
+.details-section h4:first-child {
+    margin-top: 0;
+}
+
+.details-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.details-section li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.details-section li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #ff69b4;
+}
+
+.details-section p {
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0.5rem 0;
+}
+
 /* Footer styles */
 footer {
     background-color: #4b007d;
