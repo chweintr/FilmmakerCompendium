@@ -11,10 +11,14 @@ const content = [
                 img: "https://via.placeholder.com/300x200",
                 tags: ["establishing", "landscape", "environment", "epic"],
                 details: {
-                    whyDesirable: "Used to establish location, show scale, or create a sense of isolation. Common in epic films and nature documentaries.",
-                    examples: ["Extreme wide shot of a lone warrior standing atop a mountain peak at sunrise."]
-                },
-                example: "Extreme wide shot of a lone warrior standing atop a mountain peak at sunrise."
+                    whyDesirable: "Used to establish location, show scale, or create a sense of isolation. Perfect for epic moments, establishing new locations, or showing the relationship between characters and their environment.",
+                    examples: [
+                        "A lone warrior standing atop a mountain peak at sunrise, emphasizing their solitude",
+                        "A sprawling cityscape revealing the scale of an urban environment",
+                        "A tiny boat in a vast ocean during a storm, highlighting nature's power",
+                        "An army assembling on a battlefield, showing the epic scale of conflict"
+                    ]
+                }
             },
             {
                 name: "Wide Shot (WS)",
@@ -22,10 +26,14 @@ const content = [
                 img: "https://via.placeholder.com/300x200",
                 tags: ["establishing", "context", "full-body"],
                 details: {
-                    whyDesirable: "Essential for establishing scenes, showing character relationships, or capturing action sequences.",
-                    examples: ["Wide shot of a medieval marketplace bustling with activity."]
-                },
-                example: "Wide shot of a medieval marketplace bustling with activity."
+                    whyDesirable: "Essential for establishing scenes, showing character relationships, and capturing action sequences. Helps viewers understand the spatial layout and relationships between characters and their environment.",
+                    examples: [
+                        "A medieval marketplace bustling with activity, showing daily life",
+                        "A dance sequence where you need to see full body movements",
+                        "A western standoff showing the distance between gunfighters",
+                        "A family gathering in their living room, establishing relationships"
+                    ]
+                }
             },
             {
                 name: "Medium Wide Shot (MWS)",
@@ -33,10 +41,14 @@ const content = [
                 img: "https://via.placeholder.com/300x200",
                 tags: ["balanced", "three-quarter", "conversation"],
                 details: {
-                    whyDesirable: "Great for group conversations, showing body language, or capturing movement while maintaining context.",
-                    examples: ["Medium wide shot of three friends walking down a neon-lit street at night."]
-                },
-                example: "Medium wide shot of three friends walking down a neon-lit street at night."
+                    whyDesirable: "Perfect for group conversations, showing body language, and maintaining environmental context. Balances character detail with surroundings for natural, engaging scenes.",
+                    examples: [
+                        "Three friends walking down a neon-lit street at night, showing both expressions and environment",
+                        "A family dinner scene where you want to see reactions and food",
+                        "A business meeting where body language is important",
+                        "A street performance with audience reactions visible"
+                    ]
+                }
             },
             {
                 name: "Medium Shot (MS)",
@@ -45,9 +57,13 @@ const content = [
                 tags: ["dialogue", "waist-up", "expression"],
                 details: {
                     whyDesirable: "The workhorse of dialogue scenes. Perfect for interviews, conversations, and emotional moments.",
-                    examples: ["Medium shot of a detective interrogating a suspect across a table."]
-                },
-                example: "Medium shot of a detective interrogating a suspect across a table."
+                    examples: [
+                        "A detective interrogating a suspect across a table",
+                        "A romantic dinner conversation",
+                        "A heated argument between friends",
+                        "A job interview"
+                    ]
+                }
             },
             {
                 name: "Medium Close-Up (MCU)",
@@ -56,9 +72,13 @@ const content = [
                 tags: ["expression", "emotion", "intimate"],
                 details: {
                     whyDesirable: "Ideal for emotional scenes, important dialogue, or reaction shots.",
-                    examples: ["Medium close-up of a character realizing a devastating truth."]
-                },
-                example: "Medium close-up of a character realizing a devastating truth."
+                    examples: [
+                        "A character realizing a devastating truth",
+                        "A romantic moment between two characters",
+                        "A dramatic reveal in a mystery",
+                        "A character's emotional breakdown"
+                    ]
+                }
             },
             {
                 name: "Close-Up (CU)",
@@ -67,9 +87,13 @@ const content = [
                 tags: ["emotion", "intimate", "face"],
                 details: {
                     whyDesirable: "Creates emotional connection, shows character reactions, or highlights important details.",
-                    examples: ["Close-up of tears welling up in a character's eyes."]
-                },
-                example: "Close-up of tears welling up in a character's eyes."
+                    examples: [
+                        "Tears welling up in a character's eyes",
+                        "A character's eyes widening in surprise",
+                        "A character's lips curling into a smile",
+                        "A character's face contorted in pain"
+                    ]
+                }
             },
             {
                 name: "Extreme Close-Up (ECU)",
@@ -78,9 +102,13 @@ const content = [
                 tags: ["detail", "intensity", "dramatic"],
                 details: {
                     whyDesirable: "Creates intensity, shows minute details, or emphasizes specific elements.",
-                    examples: ["Extreme close-up of a ticking pocket watch in trembling hands."]
-                },
-                example: "Extreme close-up of a ticking pocket watch in trembling hands."
+                    examples: [
+                        "A ticking pocket watch in trembling hands",
+                        "A key turning in a lock",
+                        "A gun being cocked",
+                        "A character's eyes scanning a room"
+                    ]
+                }
             },
             {
                 name: "Dutch Angle",
@@ -89,9 +117,13 @@ const content = [
                 tags: ["tension", "dramatic", "psychological"],
                 details: {
                     whyDesirable: "Used to convey psychological tension, disorientation, or dramatic moments.",
-                    examples: ["Dutch angle shot of a character running through a twisted corridor."]
-                },
-                example: "Dutch angle shot of a character running through a twisted corridor."
+                    examples: [
+                        "A character running through a twisted corridor",
+                        "A character experiencing a nightmare",
+                        "A character in a state of confusion",
+                        "A dramatic plot twist"
+                    ]
+                }
             },
             {
                 name: "Over-the-Shoulder (OTS)",
@@ -100,9 +132,13 @@ const content = [
                 tags: ["dialogue", "perspective", "conversation"],
                 details: {
                     whyDesirable: "Standard for dialogue scenes, establishes spatial relationships and eyelines.",
-                    examples: ["Over-the-shoulder shot during an intense negotiation scene."]
-                },
-                example: "Over-the-shoulder shot during an intense negotiation scene."
+                    examples: [
+                        "An intense negotiation scene",
+                        "A romantic conversation",
+                        "A heated argument",
+                        "A job interview"
+                    ]
+                }
             },
             {
                 name: "Point of View (POV)",
@@ -111,9 +147,13 @@ const content = [
                 tags: ["perspective", "subjective", "immersive"],
                 details: {
                     whyDesirable: "Creates immersion, shows character perspective, or builds tension.",
-                    examples: ["POV shot of exploring a dark cave with a flickering flashlight."]
-                },
-                example: "POV shot of exploring a dark cave with a flickering flashlight."
+                    examples: [
+                        "Exploring a dark cave with a flickering flashlight",
+                        "Looking through a sniper's scope",
+                        "Reading a letter or document",
+                        "Experiencing a character's memories"
+                    ]
+                }
             }
         ]
     },
@@ -126,10 +166,14 @@ const content = [
                 img: "https://via.placeholder.com/300x200",
                 tags: ["movement", "smooth", "tracking"],
                 details: {
-                    whyDesirable: "Creates smooth, cinematic movement. Perfect for following action or revealing scenes.",
-                    examples: ["Dolly shot following a character walking through a transforming set."]
-                },
-                example: "Dolly shot following a character walking through a transforming set."
+                    whyDesirable: "Creates smooth, cinematic movement that can follow action, reveal information, or build emotional intensity. The fluid motion helps immerse viewers and can create powerful dramatic effects.",
+                    examples: [
+                        "Following a character walking through a transforming set, revealing changes over time",
+                        "A slow push-in during an emotional monologue, increasing intimacy",
+                        "Moving past a series of vignettes in a single take",
+                        "Tracking alongside a car chase while maintaining smooth motion"
+                    ]
+                }
             },
             {
                 name: "Dolly Zoom",
@@ -137,10 +181,14 @@ const content = [
                 img: "https://via.placeholder.com/300x200",
                 tags: ["vertigo", "psychological", "dramatic"],
                 details: {
-                    whyDesirable: "Also known as the Vertigo effect. Creates disorientation or emotional impact.",
-                    examples: ["Dolly zoom on a character realizing they're standing on a skyscraper edge."]
-                },
-                example: "Dolly zoom on a character realizing they're standing on a skyscraper edge."
+                    whyDesirable: "Creates a powerful psychological effect where the background appears to shift dramatically while the subject remains the same size. Perfect for moments of realization, fear, or dramatic revelation.",
+                    examples: [
+                        "A character realizing they're standing on a skyscraper edge, emphasizing height",
+                        "The moment a detective solves a complex case, warping reality",
+                        "A horror scene where the corridor seems to stretch infinitely",
+                        "A dream sequence where space becomes distorted"
+                    ]
+                }
             },
             {
                 name: "Tracking Shot",
@@ -149,9 +197,13 @@ const content = [
                 tags: ["following", "movement", "parallel"],
                 details: {
                     whyDesirable: "Great for following action, revealing locations, or maintaining character focus.",
-                    examples: ["Tracking shot following athletes running a race."]
-                },
-                example: "Tracking shot following athletes running a race."
+                    examples: [
+                        "Following athletes running a race",
+                        "Tracking a character through a crowded market",
+                        "Moving alongside a vehicle in motion",
+                        "Following a character through a complex environment"
+                    ]
+                }
             },
             {
                 name: "Steadicam Shot",
@@ -160,9 +212,13 @@ const content = [
                 tags: ["smooth", "handheld", "flowing"],
                 details: {
                     whyDesirable: "Creates fluid movement while maintaining stability. Perfect for complex moving shots.",
-                    examples: ["Steadicam shot following a character through a crowded nightclub."]
-                },
-                example: "Steadicam shot following a character through a crowded nightclub."
+                    examples: [
+                        "Following a character through a crowded nightclub",
+                        "Moving through a complex set with ease",
+                        "Tracking a character in a dynamic environment",
+                        "Creating a sense of realism in handheld shots"
+                    ]
+                }
             },
             {
                 name: "Crane Shot",
@@ -171,9 +227,13 @@ const content = [
                 tags: ["vertical", "sweeping", "dramatic"],
                 details: {
                     whyDesirable: "Creates dramatic reveals, establishes location, or shows scale.",
-                    examples: ["Crane shot rising from street level to reveal an entire cityscape."]
-                },
-                example: "Crane shot rising from street level to reveal an entire cityscape."
+                    examples: [
+                        "Rising from street level to reveal an entire cityscape",
+                        "Moving over a landscape to show its vastness",
+                        "Sweeping over a crowd to emphasize its size",
+                        "Dramatically revealing a character's location"
+                    ]
+                }
             },
             {
                 name: "Pan",
@@ -182,9 +242,13 @@ const content = [
                 tags: ["horizontal", "rotation", "reveal"],
                 details: {
                     whyDesirable: "Used for revealing information, following action, or connecting subjects.",
-                    examples: ["Pan across a room full of suspicious characters during a murder mystery."]
-                },
-                example: "Pan across a room full of suspicious characters during a murder mystery."
+                    examples: [
+                        "Panning across a room full of suspicious characters during a murder mystery",
+                        "Following a character as they move across a room",
+                        "Revealing a hidden object or clue",
+                        "Connecting two characters in a scene"
+                    ]
+                }
             },
             {
                 name: "Tilt",
@@ -193,9 +257,13 @@ const content = [
                 tags: ["vertical", "rotation", "reveal"],
                 details: {
                     whyDesirable: "Shows height or depth, reveals information, or creates dramatic effect.",
-                    examples: ["Tilt up a massive ancient temple from ground to sky."]
-                },
-                example: "Tilt up a massive ancient temple from ground to sky."
+                    examples: [
+                        "Tilting up a massive ancient temple from ground to sky",
+                        "Revealing a character's height or stature",
+                        "Showing the depth of a room or environment",
+                        "Creating a sense of drama or tension"
+                    ]
+                }
             },
             {
                 name: "Whip Pan",
@@ -204,9 +272,13 @@ const content = [
                 tags: ["fast", "transition", "energy"],
                 details: {
                     whyDesirable: "Creates energy, transitions between scenes, or shows rapid movement.",
-                    examples: ["Whip pan between multiple conversations at a party."]
-                },
-                example: "Whip pan between multiple conversations at a party."
+                    examples: [
+                        "Whip panning between multiple conversations at a party",
+                        "Transitioning between scenes with a fast-paced feel",
+                        "Showing rapid movement or action",
+                        "Creating a sense of urgency or excitement"
+                    ]
+                }
             }
         ]
     },
@@ -220,9 +292,13 @@ const content = [
                 tags: ["wide", "landscape", "architecture"],
                 details: {
                     whyDesirable: "Great for landscapes, architecture, or creating dramatic perspective effects.",
-                    examples: ["Wide-angle shot of a gothic cathedral's interior with dramatic leading lines."]
-                },
-                example: "Wide-angle shot of a gothic cathedral's interior with dramatic leading lines."
+                    examples: [
+                        "Wide-angle shot of a gothic cathedral's interior with dramatic leading lines",
+                        "Capturing a sweeping landscape",
+                        "Showing the grandeur of a building",
+                        "Creating a sense of space or openness"
+                    ]
+                }
             },
             {
                 name: "Telephoto Lens",
@@ -231,9 +307,13 @@ const content = [
                 tags: ["compression", "distance", "isolation"],
                 details: {
                     whyDesirable: "Ideal for wildlife, sports, or creating compressed perspective effects.",
-                    examples: ["Telephoto shot of a lion stalking its prey in the savanna."]
-                },
-                example: "Telephoto shot of a lion stalking its prey in the savanna."
+                    examples: [
+                        "Telephoto shot of a lion stalking its prey in the savanna",
+                        "Capturing distant action or sports",
+                        "Showing a character's isolation or loneliness",
+                        "Creating a sense of compression or intimacy"
+                    ]
+                }
             },
             {
                 name: "Prime Lens",
@@ -242,9 +322,13 @@ const content = [
                 tags: ["sharp", "fixed", "quality"],
                 details: {
                     whyDesirable: "Provides excellent image quality and low-light performance.",
-                    examples: ["Portrait using a 85mm prime lens with beautiful bokeh."]
-                },
-                example: "Portrait using a 85mm prime lens with beautiful bokeh."
+                    examples: [
+                        "Portrait using a 85mm prime lens with beautiful bokeh",
+                        "Capturing high-quality images in low light",
+                        "Showing a character's features with sharpness",
+                        "Creating a sense of intimacy or closeness"
+                    ]
+                }
             },
             {
                 name: "Zoom Lens",
@@ -253,9 +337,13 @@ const content = [
                 tags: ["versatile", "variable", "flexible"],
                 details: {
                     whyDesirable: "Allows quick focal length changes without switching lenses.",
-                    examples: ["Documentary shot zooming from wide to close-up during action."]
-                },
-                example: "Documentary shot zooming from wide to close-up during action."
+                    examples: [
+                        "Documentary shot zooming from wide to close-up during action",
+                        "Capturing a scene with changing focal lengths",
+                        "Showing a character's reaction with a quick zoom",
+                        "Creating a sense of dynamism or energy"
+                    ]
+                }
             },
             {
                 name: "Macro Lens",
@@ -264,9 +352,13 @@ const content = [
                 tags: ["close-up", "detail", "microscopic"],
                 details: {
                     whyDesirable: "Reveals tiny details invisible to the naked eye.",
-                    examples: ["Macro shot of morning dew on a spider's web."]
-                },
-                example: "Macro shot of morning dew on a spider's web."
+                    examples: [
+                        "Macro shot of morning dew on a spider's web",
+                        "Capturing the details of a small object",
+                        "Showing the texture of a surface",
+                        "Creating a sense of wonder or curiosity"
+                    ]
+                }
             },
             {
                 name: "Fisheye Lens",
@@ -275,20 +367,43 @@ const content = [
                 tags: ["distortion", "ultra-wide", "circular"],
                 details: {
                     whyDesirable: "Creates unique perspective distortion effects.",
-                    examples: ["Fisheye shot of a skateboarder mid-trick in a halfpipe."]
-                },
-                example: "Fisheye shot of a skateboarder mid-trick in a halfpipe."
+                    examples: [
+                        "Fisheye shot of a skateboarder mid-trick in a halfpipe",
+                        "Capturing a wide scene with distortion",
+                        "Showing a character's distorted perspective",
+                        "Creating a sense of playfulness or experimentation"
+                    ]
+                }
+            },
+            {
+                name: "Anamorphic Lens",
+                description: "Creates a wide, cinematic field of view with signature horizontal lens flares and oval bokeh.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["cinematic", "widescreen", "flare"],
+                details: {
+                    whyDesirable: "Delivers the classic Hollywood cinematic look with unique characteristics like horizontal lens flares and oval bokeh. Perfect for creating an epic, theatrical feel in your shots.",
+                    examples: [
+                        "Science fiction scenes with dramatic lens flares from spacecraft lights",
+                        "Wide landscape shots with distinctive cinematic feel",
+                        "Night city scenes with beautiful oval bokeh from street lights",
+                        "Action sequences with dynamic anamorphic distortion"
+                    ]
+                }
             },
             {
                 name: "Tilt-Shift Lens",
-                description: "Specialized lens for perspective control and selective focus.",
+                description: "Specialized lens for perspective control and selective focus effects.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["perspective", "miniature", "architectural"],
                 details: {
-                    whyDesirable: "Controls perspective in architectural shots or creates miniature effects.",
-                    examples: ["Tilt-shift cityscape making buildings look like toys."]
-                },
-                example: "Tilt-shift cityscape making buildings look like toys."
+                    whyDesirable: "Offers unique creative possibilities from correcting perspective in architectural shots to creating miniature effects. Can make real-world scenes appear like detailed models.",
+                    examples: [
+                        "Architectural photography maintaining parallel vertical lines",
+                        "Cityscape shots that make buildings look like miniature models",
+                        "Product photography with precise focus control",
+                        "Creative portraits with selective focus planes"
+                    ]
+                }
             }
         ]
     },
@@ -302,31 +417,43 @@ const content = [
                 tags: ["standard", "professional", "balanced"],
                 details: {
                     whyDesirable: "Creates professional, well-balanced lighting for most situations.",
-                    examples: ["Three-point lighting setup for a corporate interview."]
-                },
-                example: "Three-point lighting setup for a corporate interview."
+                    examples: [
+                        "Three-point lighting setup for a corporate interview",
+                        "A standard lighting setup for a news broadcast",
+                        "A balanced lighting setup for a product commercial",
+                        "A professional lighting setup for a film or TV show"
+                    ]
+                }
             },
             {
                 name: "Rembrandt Lighting",
-                description: "Creates dramatic shadows with a triangle of light under the eye.",
+                description: "Creates dramatic shadows with a triangle of light under the eye on the shadowed side of the face.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["dramatic", "portrait", "shadow"],
                 details: {
-                    whyDesirable: "Classic portrait lighting technique creating depth and drama.",
-                    examples: ["Rembrandt lighting on a character in period costume."]
-                },
-                example: "Rembrandt lighting on a character in period costume."
+                    whyDesirable: "Creates a classical, painterly look with dramatic shadows and depth. Perfect for character portraits and moody scenes that require sophisticated lighting.",
+                    examples: [
+                        "Character portraits in period dramas",
+                        "Dramatic interviews or monologues",
+                        "Film noir detective scenes",
+                        "Renaissance-inspired historical scenes"
+                    ]
+                }
             },
             {
                 name: "Split Lighting",
-                description: "Lights one half of the face, leaving the other in shadow.",
+                description: "Lights exactly half the face, leaving the other half in shadow.",
                 img: "https://via.placeholder.com/300x200",
                 tags: ["dramatic", "contrast", "noir"],
                 details: {
-                    whyDesirable: "Creates dramatic contrast, popular in film noir.",
-                    examples: ["Split lighting on a mysterious character in shadows."]
-                },
-                example: "Split lighting on a mysterious character in shadows."
+                    whyDesirable: "Creates extreme contrast that can symbolize duality or internal conflict. Powerful for dramatic scenes and character moments revealing hidden depths.",
+                    examples: [
+                        "A character struggling with moral decisions",
+                        "Villain reveals in thriller scenes",
+                        "Psychological horror moments",
+                        "Dramatic confessional scenes"
+                    ]
+                }
             },
             {
                 name: "Butterfly Lighting",
@@ -335,9 +462,13 @@ const content = [
                 tags: ["glamour", "beauty", "portrait"],
                 details: {
                     whyDesirable: "Classic Hollywood glamour lighting technique.",
-                    examples: ["Butterfly lighting for a vintage Hollywood portrait."]
-                },
-                example: "Butterfly lighting for a vintage Hollywood portrait."
+                    examples: [
+                        "Vintage Hollywood portrait",
+                        "Glamorous fashion photography",
+                        "Beauty shots with soft, flattering light",
+                        "Romantic portraits with warm, golden light"
+                    ]
+                }
             },
             {
                 name: "Natural Lighting",
@@ -346,9 +477,13 @@ const content = [
                 tags: ["natural", "soft", "realistic"],
                 details: {
                     whyDesirable: "Creates realistic, motivated lighting situations.",
-                    examples: ["Natural window light illuminating a morning scene."]
-                },
-                example: "Natural window light illuminating a morning scene."
+                    examples: [
+                        "Natural window light illuminating a morning scene",
+                        "Outdoor scenes using available sunlight",
+                        "Soft, natural light for a romantic scene",
+                        "Realistic lighting for a documentary or news segment"
+                    ]
+                }
             },
             {
                 name: "Low-Key Lighting",
@@ -357,9 +492,13 @@ const content = [
                 tags: ["dark", "moody", "contrast"],
                 details: {
                     whyDesirable: "Perfect for noir, horror, or dramatic scenes.",
-                    examples: ["Low-key lighting in a detective's office at night."]
-                },
-                example: "Low-key lighting in a detective's office at night."
+                    examples: [
+                        "Low-key lighting in a detective's office at night",
+                        "A dark and moody horror scene",
+                        "A dramatic scene with high contrast",
+                        "A film noir-inspired scene with deep shadows"
+                    ]
+                }
             },
             {
                 name: "High-Key Lighting",
@@ -368,9 +507,13 @@ const content = [
                 tags: ["bright", "cheerful", "clean"],
                 details: {
                     whyDesirable: "Used in commercials, comedies, or upbeat scenes.",
-                    examples: ["High-key lighting in a bright, modern kitchen commercial."]
-                },
-                example: "High-key lighting in a bright, modern kitchen commercial."
+                    examples: [
+                        "High-key lighting in a bright, modern kitchen commercial",
+                        "A cheerful scene with minimal shadows",
+                        "A clean and minimalist aesthetic",
+                        "A comedic scene with bright, upbeat lighting"
+                    ]
+                }
             },
             {
                 name: "Practical Lighting",
@@ -379,9 +522,13 @@ const content = [
                 tags: ["realistic", "motivated", "diegetic"],
                 details: {
                     whyDesirable: "Creates realistic lighting motivated by visible sources.",
-                    examples: ["Scene lit only by practical lamps and computer screens."]
-                },
-                example: "Scene lit only by practical lamps and computer screens."
+                    examples: [
+                        "Scene lit only by practical lamps and computer screens",
+                        "A character reading a book by a table lamp",
+                        "A room lit by a fireplace",
+                        "A scene lit by neon signs or streetlights"
+                    ]
+                }
             }
         ]
     }
