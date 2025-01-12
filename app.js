@@ -127,14 +127,14 @@ document.addEventListener("DOMContentLoaded", () => {
             `<button class="filter-btn" data-filter="${category.category.toLowerCase().replace(/\s+/g, '-')}">${category.category}</button>`
         ).join("")}
     `;
-    main.insertBefore(filterContainer, main.firstChild);
+    main.appendChild(filterContainer);
 
     // Create search results container
     const searchResults = document.createElement("div");
     searchResults.id = "search-results";
     searchResults.className = "grid";
     searchResults.style.display = "none";
-    main.insertBefore(searchResults, main.firstChild);
+    main.appendChild(searchResults);
 
     // Generate content sections
     content.forEach(category => {
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="grid">
                 ${category.items.map(item => `
                     <div class="card" data-tags="${item.tags.join(" ")}" data-category="${category.category}">
-                        <img src="${item.img}" alt="${item.name}">
+                        <img src="${item.img}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/300x200'">
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
                         <div class="tags">
@@ -161,105 +161,122 @@ document.addEventListener("DOMContentLoaded", () => {
         main.appendChild(section);
     });
 
-    // Enhanced search functionality
+    // Setup event handlers
     const searchInput = document.getElementById("search-input");
     const allCards = document.querySelectorAll(".card");
     const filterBtns = document.querySelectorAll(".filter-btn");
     const sections = document.querySelectorAll("section");
 
     // Filter functionality
-    filterBtns.forEach(btn => {
-        btn.addEventListener("click", () => {
-            // Update active button
-            filterBtns.forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
+    filterContainer.addEventListener("click", (e) => {
+        const btn = e.target.closest(".filter-btn");
+        if (!btn) return;
 
-            // Show sections, hide search results
-            searchResults.style.display = "none";
-            sections.forEach(section => section.style.display = "block");
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
 
-            const filter = btn.dataset.filter;
-            allCards.forEach(card => {
-                if (filter === "all") {
-                    card.style.display = "block";
-                } else {
-                    const category = card.closest("section").id;
-                    card.style.display = category === filter ? "block" : "none";
-                }
-            });
+        searchResults.style.display = "none";
+        sections.forEach(section => section.style.display = "block");
 
-            // Hide empty sections
-            sections.forEach(section => {
-                const hasVisibleCards = section.querySelector('.card[style="display: block"]');
-                section.style.display = hasVisibleCards ? "block" : "none";
-            });
+        const filter = btn.dataset.filter;
+        allCards.forEach(card => {
+            if (filter === "all") {
+                card.style.display = "block";
+            } else {
+                const category = card.closest("section").id;
+                card.style.display = category === filter ? "block" : "none";
+            }
+        });
+
+        sections.forEach(section => {
+            const hasVisibleCards = Array.from(section.querySelectorAll('.card'))
+                .some(card => card.style.display !== "none");
+            section.style.display = hasVisibleCards ? "block" : "none";
         });
     });
 
-    // Enhanced search functionality
+    // Search functionality with debouncing
+    let searchTimeout;
     searchInput.addEventListener("input", () => {
-        const query = searchInput.value.toLowerCase().trim();
-        
-        if (query.length > 0) {
-            // Hide sections, show search results
-            sections.forEach(section => section.style.display = "none");
-            searchResults.style.display = "grid";
-            searchResults.innerHTML = "";
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            const query = searchInput.value.toLowerCase().trim();
+            
+            if (query.length > 0) {
+                filterBtns.forEach(btn => btn.classList.remove("active"));
+                document.querySelector('[data-filter="all"]').classList.add("active");
+                
+                sections.forEach(section => section.style.display = "none");
+                searchResults.style.display = "grid";
+                searchResults.innerHTML = "";
 
-            // Search across all content
-            let results = [];
-            content.forEach(category => {
-                category.items.forEach(item => {
-                    const searchText = `${item.name} ${item.description} ${item.tags.join(" ")} ${category.category} ${item.details}`.toLowerCase();
-                    if (searchText.includes(query)) {
-                        results.push({ ...item, category: category.category });
-                    }
+                let results = [];
+                content.forEach(category => {
+                    category.items.forEach(item => {
+                        const searchText = `${item.name} ${item.description} ${item.tags.join(" ")} ${category.category} ${item.details}`.toLowerCase();
+                        if (searchText.includes(query)) {
+                            results.push({ ...item, category: category.category });
+                        }
+                    });
                 });
-            });
 
-            // Display results
-            if (results.length > 0) {
-                results.forEach(result => {
-                    const resultCard = document.createElement("div");
-                    resultCard.className = "card";
-                    resultCard.innerHTML = `
-                        <div class="category-label">${result.category}</div>
-                        <img src="${result.img}" alt="${result.name}">
-                        <h3>${result.name}</h3>
-                        <p>${result.description}</p>
-                        <div class="tags">
-                            ${result.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
-                        </div>
-                        <div class="expanded-content">
-                            <p>${result.details}</p>
+                if (results.length > 0) {
+                    results.forEach(result => {
+                        const resultCard = document.createElement("div");
+                        resultCard.className = "card";
+                        resultCard.innerHTML = `
+                            <div class="category-label">${result.category}</div>
+                            <img src="${result.img}" alt="${result.name}" onerror="this.src='https://via.placeholder.com/300x200'">
+                            <h3>${result.name}</h3>
+                            <p>${result.description}</p>
+                            <div class="tags">
+                                ${result.tags.map(tag => `<span class="tag">${tag}</span>`).join("")}
+                            </div>
+                            <div class="expanded-content">
+                                <p>${result.details}</p>
+                            </div>
+                        `;
+                        searchResults.appendChild(resultCard);
+                    });
+                } else {
+                    searchResults.innerHTML = `
+                        <div class="no-results">
+                            <p>No results found for "${query}"</p>
+                            <p>Try different keywords or check your spelling</p>
                         </div>
                     `;
-                    searchResults.appendChild(resultCard);
-                });
+                }
             } else {
-                searchResults.innerHTML = `
-                    <div class="no-results">
-                        <p>No results found for "${query}"</p>
-                        <p>Try different keywords or check your spelling</p>
-                    </div>
-                `;
+                document.querySelector('[data-filter="all"]').click();
             }
-        } else {
-            // Show original content when search is empty
-            searchResults.style.display = "none";
-            sections.forEach(section => section.style.display = "block");
+        }, 300);
+    });
+
+    // Card expansion
+    document.addEventListener("click", (e) => {
+        const card = e.target.closest(".card");
+        if (!card) return;
+
+        const wasExpanded = card.classList.contains("expanded");
+        allCards.forEach(c => {
+            if (c !== card && c.classList.contains("expanded")) {
+                c.style.transition = "all 0.3s ease";
+                c.classList.remove("expanded");
+            }
+        });
+
+        if (!wasExpanded) {
+            card.style.transition = "all 0.3s ease";
+            card.classList.add("expanded");
+            
+            const cardRect = card.getBoundingClientRect();
+            const isVisible = (cardRect.top >= 0) && (cardRect.bottom <= window.innerHeight);
+            if (!isVisible) {
+                card.scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
         }
     });
 
-    // Card expansion functionality
-    document.addEventListener("click", (e) => {
-        const card = e.target.closest(".card");
-        if (card) {
-            const wasExpanded = card.classList.contains("expanded");
-            allCards.forEach(c => c.classList.remove("expanded"));
-            if (!wasExpanded) {
-                card.classList.add("expanded");
-            }
-        }
-    });
+    // Initial state
+    document.querySelector('[data-filter="all"]').click();
 });

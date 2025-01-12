@@ -95,31 +95,67 @@ nav a:hover {
     width: 55%;
 }
 
-/* Filter buttons */
+/* Filter buttons improvements */
 .filter-buttons {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin: 1rem 0;
     flex-wrap: wrap;
+    padding: 0.5rem;
 }
 
 .filter-btn {
-    padding: 0.5rem 1rem;
+    position: relative;
+    padding: 0.7rem 1.2rem;
     border: none;
-    border-radius: 20px;
+    border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
     cursor: pointer;
     transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 100px;
+    text-align: center;
+    z-index: 1;
+    overflow: hidden;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff69b4, #4b007d);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
 }
 
 .filter-btn:hover {
-    background-color: rgba(255, 105, 180, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.filter-btn:hover::before {
+    opacity: 0.2;
+}
+
+.filter-btn:active {
+    transform: translateY(1px);
 }
 
 .filter-btn.active {
     background-color: #ff69b4;
+    box-shadow: 0 4px 12px rgba(255, 105, 180, 0.3);
+}
+
+.filter-btn.active:hover {
+    transform: translateY(-1px);
 }
 
 /* Main content styles */
@@ -155,7 +191,9 @@ section h2 {
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+    will-change: transform, box-shadow;
     animation: fadeIn 0.5s ease forwards;
     cursor: pointer;
     position: relative;
@@ -188,6 +226,25 @@ section h2 {
     margin-bottom: 1rem;
 }
 
+/* Improved card transitions */
+.card.expanded {
+    transform: translateY(-5px) scale(1.02);
+    z-index: 2;
+}
+
+.card .expanded-content {
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.card.expanded .expanded-content {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 1rem;
+}
+
 /* Tags styling */
 .tags {
     margin-top: 1rem;
@@ -208,24 +265,6 @@ section h2 {
 .tag:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Expanded card styles */
-.card.expanded {
-    grid-column: span 2;
-    transform: scale(1.02);
-}
-
-.card .expanded-content {
-    display: none;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.card.expanded .expanded-content {
-    display: block;
-    animation: fadeIn 0.3s ease forwards;
 }
 
 /* Search results styles */
@@ -300,6 +339,17 @@ footer {
 
     .card.expanded {
         grid-column: span 1;
+    }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+    .filter-btn:hover {
+        transform: none;
+    }
+    
+    .filter-btn.active:hover {
+        transform: none;
     }
 }
 
