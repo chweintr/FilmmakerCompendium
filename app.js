@@ -16,18 +16,16 @@ function createCard(item) {
     const card = document.createElement('div');
     card.className = 'card';
     
-    // Create main content first
-    const mainContent = document.createElement('div');
-    mainContent.className = 'card-main';
-    mainContent.innerHTML = `
-        <h3 class="card-title">${item.name}</h3>
+    const content = document.createElement('div');
+    content.className = 'card-content';
+    content.innerHTML = `
+        <h3>${item.name}</h3>
         <p class="description">${item.description}</p>
         <div class="tags">
             ${item.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
         </div>
     `;
     
-    // Create details section separately
     const details = document.createElement('div');
     details.className = 'details';
     details.innerHTML = `
@@ -45,44 +43,21 @@ function createCard(item) {
         </div>
     `;
     
-    // Append both sections to card
-    card.appendChild(mainContent);
+    card.appendChild(content);
     card.appendChild(details);
     
-    // Click handler with position adjustment
+    // Click handler
     card.addEventListener('click', (e) => {
-        if (e.target.closest('.details')) {
-            return;
-        }
+        if (e.target.closest('.details')) return;
         
-        e.stopPropagation();
-        
-        // Close previously active card
+        // Close other cards
         if (activeCard && activeCard !== card) {
             activeCard.classList.remove('expanded');
         }
         
         // Toggle current card
-        const wasExpanded = card.classList.contains('expanded');
         card.classList.toggle('expanded');
-        
-        // Update active card reference
-        activeCard = wasExpanded ? null : card;
-        
-        // Ensure expanded card is visible
-        if (!wasExpanded) {
-            const cardRect = card.getBoundingClientRect();
-            const detailsHeight = card.querySelector('.details').offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            if (cardRect.bottom + detailsHeight > windowHeight) {
-                const scrollTarget = card.offsetTop - 20;
-                window.scrollTo({
-                    top: scrollTarget,
-                    behavior: 'smooth'
-                });
-            }
-        }
+        activeCard = card.classList.contains('expanded') ? card : null;
     });
     
     return card;
@@ -90,15 +65,12 @@ function createCard(item) {
 
 // Render cards
 function renderCards(searchTerm = '') {
-    // Clear container and active card
     cardsContainer.innerHTML = '';
     activeCard = null;
     
-    // Create fragment for batch update
     const fragment = document.createDocumentFragment();
     let hasResults = false;
     
-    // Add matching cards to fragment
     content.forEach(category => {
         category.items.forEach(item => {
             if (matchesSearch(item, searchTerm)) {
@@ -108,7 +80,6 @@ function renderCards(searchTerm = '') {
         });
     });
     
-    // Single DOM update
     cardsContainer.appendChild(fragment);
     cardsContainer.classList.toggle('no-results', !hasResults);
 }
@@ -144,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     renderCards();
     
-    // Add search handler with debounce
+    // Search handler
     let searchTimeout;
     searchInput.addEventListener('input', () => {
         clearTimeout(searchTimeout);
