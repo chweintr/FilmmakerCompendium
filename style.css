@@ -12,37 +12,37 @@ body {
     line-height: 1.6;
     width: 100%;
     overflow-x: hidden;
+    /* Add more padding to body */
+    padding: 20px;
 }
 
 /* Layout */
 .container {
-    width: 100%;
+    width: 95%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 40px;
     position: relative;
+    /* Add breathing room */
+    min-height: 100vh;
 }
 
 header {
     background-color: #2c3e50;
     color: white;
-    padding: 20px;
-    margin-bottom: 30px;
+    padding: 40px;
+    margin: -20px -20px 30px -20px;
     position: relative;
     z-index: 2;
-    /* Remove any text-shadow or duplicate elements */
-    text-shadow: none;
+    /* Add more space around header */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
-    /* Ensure clean text rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: none;
-    position: relative;
-    z-index: 1;
+    margin: 0 0 30px 0;
+    padding: 0 20px;
+    font-size: 2.5rem;
 }
 
 /* Search */
@@ -51,76 +51,74 @@ h1 {
     margin: 0 auto;
     position: relative;
     z-index: 2;
+    /* Add padding around search */
+    padding: 0 20px;
 }
 
 #search {
     width: 100%;
-    padding: 10px 20px;
+    padding: 15px 25px;
     border: 2px solid #e9ecef;
     border-radius: 25px;
     font-size: 16px;
     background: white;
+    /* Add box shadow for depth */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 /* Cards Grid */
 .cards-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    gap: 30px;
+    padding: 40px 20px;
     position: relative;
+    /* Ensure enough space for expanded cards */
+    margin-bottom: 40px;
 }
 
 /* Card */
 .card {
     background: white;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: 12px;
+    padding: 25px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     cursor: pointer;
     position: relative;
-    /* Ensure card is above others when expanded */
     z-index: 1;
-    /* Prevent text rendering issues */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.card-main {
-    position: relative;
-    z-index: 2;
-}
-
-.card-title {
-    color: #2c3e50;
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-    /* Prevent text rendering issues */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-shadow: none;
+    /* Add margin for expanded state */
+    margin-bottom: 20px;
 }
 
 .card.expanded {
     z-index: 3;
 }
 
-.description {
+.card-title {
+    color: #2c3e50;
     margin-bottom: 15px;
+    font-size: 1.25rem;
+    padding: 0 5px;
+}
+
+.description {
+    margin-bottom: 20px;
+    padding: 0 5px;
 }
 
 /* Tags */
 .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 15px;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 0 5px;
 }
 
 .tag {
     background: #e9ecef;
-    padding: 4px 12px;
-    border-radius: 15px;
+    padding: 6px 15px;
+    border-radius: 20px;
     font-size: 14px;
 }
 
@@ -132,10 +130,10 @@ h1 {
     right: 0;
     top: 100%;
     background: white;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 20px;
-    margin-top: -8px;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 25px;
+    margin-top: -12px;
     z-index: 2;
 }
 
@@ -144,67 +142,81 @@ h1 {
 }
 
 .examples {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .examples ul {
     list-style: none;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .examples li {
-    margin-bottom: 8px;
-    padding: 8px;
+    margin-bottom: 12px;
+    padding: 12px;
     background: #f8f9fa;
-    border-radius: 4px;
+    border-radius: 8px;
 }
 
 /* Resources Section */
 #resources {
     background: white;
-    padding: 40px 20px;
+    padding: 50px 30px;
     text-align: center;
-    margin: 40px auto;
+    margin: 60px auto;
     max-width: 800px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     position: relative;
     z-index: 1;
 }
 
 #resources h2 {
     color: #2c3e50;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 2rem;
 }
 
 #resources p {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
     color: #666;
+    padding: 0 20px;
 }
 
 .button {
     display: inline-block;
-    padding: 12px 24px;
+    padding: 15px 30px;
     background-color: #2c3e50;
     color: white;
     text-decoration: none;
-    border-radius: 25px;
+    border-radius: 30px;
+    font-size: 1.1rem;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-    .container {
+    body {
         padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+        width: 100%;
+    }
+    
+    header {
+        padding: 30px 20px;
+        margin: -10px -10px 20px -10px;
     }
     
     .cards-container {
         grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 10px;
+        gap: 20px;
+        padding: 20px 10px;
     }
     
     .card {
-        padding: 15px;
+        padding: 20px;
+        margin-bottom: 15px;
     }
     
     .details {
@@ -216,6 +228,12 @@ h1 {
         max-height: 80vh;
         overflow-y: auto;
         margin: 0;
-        border-radius: 8px 8px 0 0;
+        border-radius: 12px 12px 0 0;
+        padding: 20px;
+    }
+    
+    #resources {
+        margin: 40px auto;
+        padding: 30px 20px;
     }
 }
