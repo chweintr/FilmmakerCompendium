@@ -6,6 +6,51 @@ const content = [
         category: "Shot Types",
         items: [
             {
+                name: "Extreme Close-Up Shot (ECU)",
+                description: "Focuses on a very small detail, like an eye or an object.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["intense", "microscopic", "revealing", "focused"],
+                details: {
+                    whyDesirable: "Creates intense intimacy or highlights crucial details. Perfect for emotional moments or revealing important objects.",
+                    examples: [
+                        { film: "Requiem for a Dream", scene: "Drug Injection", description: "Extreme focus on a needle" },
+                        "A single tear rolling down a character's cheek",
+                        "A key detail in a mystery plot",
+                        "An intense emotional reaction in someone's eyes"
+                    ]
+                }
+            },
+            {
+                name: "Close-Up Shot (CU)",
+                description: "Tightly framed shot that shows detail or emotion.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["intimate", "detailed", "emotional", "personal", "intense", "focused"],
+                details: {
+                    whyDesirable: "Creates emotional connection and emphasizes character reactions. Essential for dramatic moments.",
+                    examples: [
+                        { film: "Psycho", scene: "Shower Scene", description: "Focus on Marion's eye" },
+                        "A character's reaction to devastating news",
+                        "An intimate moment between two characters",
+                        "A crucial emotional turning point"
+                    ]
+                }
+            },
+            {
+                name: "Medium Shot (MS)",
+                description: "Shows subject from waist up, balancing detail and context.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["balanced", "natural", "neutral", "engaging", "personal"],
+                details: {
+                    whyDesirable: "Perfect for dialogue and character interaction. Shows both facial expressions and body language.",
+                    examples: [
+                        { film: "Casablanca", scene: "Rick's Café", description: "Conversations between Rick and Ilsa" },
+                        "A business meeting between characters",
+                        "A casual conversation in a café",
+                        "An interview scene"
+                    ]
+                }
+            },
+            {
                 name: "Extreme Wide Shot (EWS)",
                 description: "Shows the subject from a great distance, emphasizing their environment and surroundings.",
                 img: "https://via.placeholder.com/300x200",
@@ -21,137 +66,77 @@ const content = [
                 }
             },
             {
+                name: "Two-Shot",
+                description: "Frames two subjects in a single composition.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["relational", "balanced", "dialogue", "character-focused"],
+                details: {
+                    whyDesirable: "Shows relationship dynamics and interactions between characters. Perfect for dialogue scenes.",
+                    examples: [
+                        { film: "The Social Network", scene: "Mark and Eduardo's Conversations", description: "Emphasizes relationship dynamics" },
+                        "A romantic scene between two characters",
+                        "A tense standoff between rivals",
+                        "A parent-child conversation"
+                    ]
+                }
+            },
+            {
+                name: "POV Shot",
+                description: "Puts the audience in the eyes of a character.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["immersive", "intimate", "subjective", "perspective"],
+                details: {
+                    whyDesirable: "Creates direct connection with character perspective and heightens audience immersion.",
+                    examples: [
+                        { film: "Goodfellas", scene: "Henry Hill's Perspective", description: "Walking through the Copacabana club" },
+                        "Looking through binoculars or a telescope",
+                        "A character's dizzy or disoriented view",
+                        "A first-person action sequence"
+                    ]
+                }
+            },
+            {
+                name: "Insert Shot",
+                description: "Highlights a specific detail in the scene.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["detail-oriented", "focused", "narrative"],
+                details: {
+                    whyDesirable: "Draws attention to important details and provides crucial story information.",
+                    examples: [
+                        { film: "Pulp Fiction", scene: "Briefcase Open", description: "Close-up of mysterious glowing briefcase" },
+                        "A ticking clock showing time pressure",
+                        "A hidden clue being discovered",
+                        "A character's hand gripping a weapon"
+                    ]
+                }
+            },
+            {
                 name: "Wide Shot (WS)",
-                description: "Shows the entire subject and their immediate surroundings, providing context and spatial relationships.",
+                description: "Shows entire subject and their surroundings.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["establishing", "context", "full-body"],
+                tags: ["expansive", "contextual", "epic", "establishing"],
                 details: {
-                    whyDesirable: "Essential for establishing scenes, showing character relationships, and capturing action sequences. Helps viewers understand the spatial layout and relationships between characters and their environment.",
+                    whyDesirable: "Establishes location and context. Shows the relationship between characters and their environment.",
                     examples: [
-                        "A medieval marketplace bustling with activity, showing daily life",
-                        "A dance sequence where you need to see full body movements",
-                        "A western standoff showing the distance between gunfighters",
-                        "A family gathering in their living room, establishing relationships"
+                        { film: "Lawrence of Arabia", scene: "Desert Journey", description: "Expansive desert landscapes" },
+                        "A character walking through a bustling city",
+                        "A wide view of a battlefield",
+                        "An establishing shot of a new location"
                     ]
                 }
             },
             {
-                name: "Medium Wide Shot (MWS)",
-                description: "Shows the subject from the knees up, balancing environment and character detail.",
+                name: "Dutch Angle Shot",
+                description: "Camera tilted to create a diagonal composition.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["balanced", "three-quarter", "conversation"],
+                tags: ["disorienting", "dramatic", "psychological"],
                 details: {
-                    whyDesirable: "Perfect for group conversations, showing body language, and maintaining environmental context. Balances character detail with surroundings for natural, engaging scenes.",
+                    whyDesirable: "Creates unease and psychological tension. Perfect for thriller and horror scenes.",
                     examples: [
-                        "Three friends walking down a neon-lit street at night, showing both expressions and environment",
-                        "A family dinner scene where you want to see reactions and food",
-                        "A business meeting where body language is important",
-                        "A street performance with audience reactions visible"
-                    ]
-                }
-            },
-            {
-                name: "Medium Shot (MS)",
-                description: "Frames the subject from waist up, focusing on upper body language and facial expressions.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["dialogue", "waist-up", "expression"],
-                details: {
-                    whyDesirable: "The workhorse of dialogue scenes. Perfect for interviews, conversations, and emotional moments.",
-                    examples: [
-                        "A detective interrogating a suspect across a table",
-                        "A romantic dinner conversation",
-                        "A heated argument between friends",
-                        "A job interview"
-                    ]
-                }
-            },
-            {
-                name: "Medium Close-Up (MCU)",
-                description: "Shows the subject from chest up, emphasizing facial expressions while retaining some body language.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["expression", "emotion", "intimate"],
-                details: {
-                    whyDesirable: "Ideal for emotional scenes, important dialogue, or reaction shots.",
-                    examples: [
-                        "A character realizing a devastating truth",
-                        "A romantic moment between two characters",
-                        "A dramatic reveal in a mystery",
-                        "A character's emotional breakdown"
-                    ]
-                }
-            },
-            {
-                name: "Close-Up (CU)",
-                description: "Tightly frames the subject's face, focusing on emotional expression and intimate details.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["emotion", "intimate", "face"],
-                details: {
-                    whyDesirable: "Creates emotional connection, shows character reactions, or highlights important details.",
-                    examples: [
-                        "Tears welling up in a character's eyes",
-                        "A character's eyes widening in surprise",
-                        "A character's lips curling into a smile",
-                        "A character's face contorted in pain"
-                    ]
-                }
-            },
-            {
-                name: "Extreme Close-Up (ECU)",
-                description: "Shows extreme detail of a subject, often a specific feature or object.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["detail", "intensity", "dramatic"],
-                details: {
-                    whyDesirable: "Creates intensity, shows minute details, or emphasizes specific elements.",
-                    examples: [
-                        "A ticking pocket watch in trembling hands",
-                        "A key turning in a lock",
-                        "A gun being cocked",
-                        "A character's eyes scanning a room"
-                    ]
-                }
-            },
-            {
-                name: "Dutch Angle",
-                description: "Tilts the camera off its horizontal axis to create unease or tension.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["tension", "dramatic", "psychological"],
-                details: {
-                    whyDesirable: "Used to convey psychological tension, disorientation, or dramatic moments.",
-                    examples: [
-                        "A character running through a twisted corridor",
-                        "A character experiencing a nightmare",
-                        "A character in a state of confusion",
-                        "A dramatic plot twist"
-                    ]
-                }
-            },
-            {
-                name: "Over-the-Shoulder (OTS)",
-                description: "Films from behind one character's shoulder while facing another character.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["dialogue", "perspective", "conversation"],
-                details: {
-                    whyDesirable: "Standard for dialogue scenes, establishes spatial relationships and eyelines.",
-                    examples: [
-                        "An intense negotiation scene",
-                        "A romantic conversation",
-                        "A heated argument",
-                        "A job interview"
-                    ]
-                }
-            },
-            {
-                name: "Point of View (POV)",
-                description: "Shows the scene directly from a character's perspective.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["perspective", "subjective", "immersive"],
-                details: {
-                    whyDesirable: "Creates immersion, shows character perspective, or builds tension.",
-                    examples: [
-                        "Exploring a dark cave with a flickering flashlight",
-                        "Looking through a sniper's scope",
-                        "Reading a letter or document",
-                        "Experiencing a character's memories"
+                        { film: "Thor", scene: "Asgard Scenes", description: "Stylized tilted perspective" },
+                        "A character's mental breakdown",
+                        "A scene of confusion or chaos",
+                        "A moment of psychological distress"
                     ]
                 }
             }
@@ -162,121 +147,76 @@ const content = [
         items: [
             {
                 name: "Dolly Shot",
-                description: "Camera moves smoothly along tracks, creating fluid horizontal movement.",
+                description: "Camera moves smoothly towards or away from the subject.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["movement", "smooth", "tracking"],
+                tags: ["smooth", "purposeful", "dynamic", "revealing"],
                 details: {
-                    whyDesirable: "Creates smooth, cinematic movement that can follow action, reveal information, or build emotional intensity. The fluid motion helps immerse viewers and can create powerful dramatic effects.",
+                    whyDesirable: "Creates fluid movement and emotional impact. Perfect for revealing or emphasizing elements.",
                     examples: [
-                        "Following a character walking through a transforming set, revealing changes over time",
-                        "A slow push-in during an emotional monologue, increasing intimacy",
-                        "Moving past a series of vignettes in a single take",
-                        "Tracking alongside a car chase while maintaining smooth motion"
-                    ]
-                }
-            },
-            {
-                name: "Dolly Zoom",
-                description: "Simultaneously dollies and zooms in opposite directions, creating a vertigo effect.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["vertigo", "psychological", "dramatic"],
-                details: {
-                    whyDesirable: "Creates a powerful psychological effect where the background appears to shift dramatically while the subject remains the same size. Perfect for moments of realization, fear, or dramatic revelation.",
-                    examples: [
-                        "A character realizing they're standing on a skyscraper edge, emphasizing height",
-                        "The moment a detective solves a complex case, warping reality",
-                        "A horror scene where the corridor seems to stretch infinitely",
-                        "A dream sequence where space becomes distorted"
+                        { film: "Jaws", scene: "Beach Realization", description: "Zoom and dolly simultaneously" },
+                        "A dramatic character revelation",
+                        "A slow approach to an important object",
+                        "Following a character through a scene"
                     ]
                 }
             },
             {
                 name: "Tracking Shot",
-                description: "Camera follows alongside moving subjects, maintaining a consistent distance.",
+                description: "Camera follows a subject, maintaining a consistent distance.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["following", "movement", "parallel"],
+                tags: ["immersive", "continuous", "dynamic"],
                 details: {
-                    whyDesirable: "Great for following action, revealing locations, or maintaining character focus.",
+                    whyDesirable: "Creates immersive experience and maintains connection with subject. Perfect for action sequences.",
                     examples: [
-                        "Following athletes running a race",
-                        "Tracking a character through a crowded market",
-                        "Moving alongside a vehicle in motion",
-                        "Following a character through a complex environment"
+                        { film: "1917", scene: "Trench Sequence", description: "One-take tracking through the trenches" },
+                        "Following a character through a crowded space",
+                        "Tracking alongside a moving vehicle",
+                        "Following a chase sequence"
                     ]
                 }
             },
             {
-                name: "Steadicam Shot",
-                description: "Smooth, handheld camera movement using a stabilizing system.",
+                name: "Dolly Zoom",
+                description: "Combines dolly movement with zoom to create vertigo effect.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["smooth", "handheld", "flowing"],
+                tags: ["psychological", "distorted", "dramatic"],
                 details: {
-                    whyDesirable: "Creates fluid movement while maintaining stability. Perfect for complex moving shots.",
+                    whyDesirable: "Creates disorienting effect and psychological impact. Perfect for moments of realization or fear.",
                     examples: [
-                        "Following a character through a crowded nightclub",
-                        "Moving through a complex set with ease",
-                        "Tracking a character in a dynamic environment",
-                        "Creating a sense of realism in handheld shots"
-                    ]
-                }
-            },
-            {
-                name: "Crane Shot",
-                description: "Camera moves vertically and horizontally using a mechanical crane.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["vertical", "sweeping", "dramatic"],
-                details: {
-                    whyDesirable: "Creates dramatic reveals, establishes location, or shows scale.",
-                    examples: [
-                        "Rising from street level to reveal an entire cityscape",
-                        "Moving over a landscape to show its vastness",
-                        "Sweeping over a crowd to emphasize its size",
-                        "Dramatically revealing a character's location"
-                    ]
-                }
-            },
-            {
-                name: "Pan",
-                description: "Camera rotates horizontally from a fixed position.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["horizontal", "rotation", "reveal"],
-                details: {
-                    whyDesirable: "Used for revealing information, following action, or connecting subjects.",
-                    examples: [
-                        "Panning across a room full of suspicious characters during a murder mystery",
-                        "Following a character as they move across a room",
-                        "Revealing a hidden object or clue",
-                        "Connecting two characters in a scene"
-                    ]
-                }
-            },
-            {
-                name: "Tilt",
-                description: "Camera rotates vertically from a fixed position.",
-                img: "https://via.placeholder.com/300x200",
-                tags: ["vertical", "rotation", "reveal"],
-                details: {
-                    whyDesirable: "Shows height or depth, reveals information, or creates dramatic effect.",
-                    examples: [
-                        "Tilting up a massive ancient temple from ground to sky",
-                        "Revealing a character's height or stature",
-                        "Showing the depth of a room or environment",
-                        "Creating a sense of drama or tension"
+                        { film: "Vertigo", scene: "Staircase Scene", description: "Classic Hitchcock effect" },
+                        "A character's moment of shocking realization",
+                        "A scene of growing anxiety or fear",
+                        "A dramatic reveal of height or depth"
                     ]
                 }
             },
             {
                 name: "Whip Pan",
-                description: "Extremely fast pan that blurs the image.",
+                description: "Rapid camera movement from one subject to another.",
                 img: "https://via.placeholder.com/300x200",
-                tags: ["fast", "transition", "energy"],
+                tags: ["energetic", "fast", "transitional"],
                 details: {
-                    whyDesirable: "Creates energy, transitions between scenes, or shows rapid movement.",
+                    whyDesirable: "Creates dynamic transitions and high energy. Perfect for fast-paced sequences.",
                     examples: [
-                        "Whip panning between multiple conversations at a party",
-                        "Transitioning between scenes with a fast-paced feel",
-                        "Showing rapid movement or action",
-                        "Creating a sense of urgency or excitement"
+                        { film: "Baby Driver", scene: "Car Chase", description: "Quick pans during action" },
+                        "Quick transitions between conversations",
+                        "Following rapid action sequences",
+                        "Creating dynamic scene transitions"
+                    ]
+                }
+            },
+            {
+                name: "Arc Shot",
+                description: "Camera moves in a circular motion around the subject.",
+                img: "https://via.placeholder.com/300x200",
+                tags: ["cinematic", "immersive", "rotational"],
+                details: {
+                    whyDesirable: "Creates dynamic perspective and reveals multiple angles. Perfect for dramatic moments.",
+                    examples: [
+                        { film: "The Matrix", scene: "Trinity Kick", description: "Dynamic arc motion around character" },
+                        "A dramatic character introduction",
+                        "A moment of triumph or revelation",
+                        "A fight scene highlight"
                     ]
                 }
             }
@@ -688,7 +628,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
                 sections.forEach(section => section.style.display = "none");
                 searchResults.style.display = "grid";
-                searchResults.innerHTML = "";
+                searchResults.innerHTML = ""
 
                 let results = [];
                 content.forEach(category => {
