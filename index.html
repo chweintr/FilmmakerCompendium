@@ -3,15 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Prevent content reflow -->
+    <meta name="viewport-fit" content="cover">
+    <!-- Disable automatic phone number linking -->
+    <meta name="format-detection" content="telephone=no">
+    <!-- Disable automatic address linking -->
+    <meta name="format-detection" content="address=no">
+    <!-- Disable automatic email linking -->
+    <meta name="format-detection" content="email=no">
+    <!-- Prevent iOS text size adjust -->
+    <meta name="text-size-adjust" content="100%">
     <title>Filmmaker's Compendium</title>
+    <!-- Preload critical resources -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="preload" href="app.js" as="script">
+    <!-- Apply styles -->
     <link rel="stylesheet" href="style.css">
+    <!-- Ensure content is visible during load -->
+    <style>
+        .js-loading * {
+            visibility: hidden;
+        }
+        .js-loading:before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f5f6fa;
+        }
+    </style>
 </head>
-<body>
+<body class="js-loading">
     <header>
         <h1>Filmmaker's Compendium</h1>
         <div class="search-container">
-            <input type="text" id="search" placeholder="Search techniques...">
+            <input type="text" id="search" placeholder="Search techniques..." autocomplete="off">
         </div>
     </header>
     
@@ -22,9 +52,16 @@
     <section id="resources">
         <h2>Resources</h2>
         <p>Explore our comprehensive guide to filmmaking techniques, tools, and inspiration.</p>
-        <a href="docs/resources.pdf" target="_blank" class="button">Download the Resources Guide</a>
+        <a href="docs/resources.pdf" target="_blank" rel="noopener" class="button">Download the Resources Guide</a>
     </section>
 
-    <script src="app.js"></script>
+    <!-- Load script at the end -->
+    <script src="app.js" defer></script>
+    <!-- Remove loading class once loaded -->
+    <script>
+        window.addEventListener('load', function() {
+            document.body.classList.remove('js-loading');
+        });
+    </script>
 </body>
 </html>

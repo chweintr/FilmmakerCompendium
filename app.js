@@ -2,6 +2,7 @@
 const searchInput = document.getElementById('search');
 const cardsContainer = document.getElementById('cardsContainer');
 let activeCard = null;
+let isRendering = false;
 
 // Handle clicks outside expanded cards
 document.addEventListener('click', (e) => {
@@ -11,14 +12,20 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Create card element
+// Create card element with optimizations
 function createCard(item) {
+    // Create elements outside of fragment
     const card = document.createElement('div');
-    card.className = 'card';
-    
     const content = document.createElement('div');
+    const details = document.createElement('div');
+    
+    // Set classes
+    card.className = 'card';
     content.className = 'card-content';
-    content.innerHTML = `
+    details.className = 'details';
+    
+    // Create content HTML string
+    const contentHTML = `
         <h3>${item.name}</h3>
         <p class="description">${item.description}</p>
         <div class="tags">
@@ -26,9 +33,8 @@ function createCard(item) {
         </div>
     `;
     
-    const details = document.createElement('div');
-    details.className = 'details';
-    details.innerHTML = `
+    // Create details HTML string
+    const detailsHTML = `
         <p><strong>Why it's desirable:</strong> ${item.details.whyDesirable}</p>
         <div class="examples">
             <strong>Examples:</strong>
@@ -43,34 +49,54 @@ function createCard(item) {
         </div>
     `;
     
+    // Set innerHTML once
+    content.innerHTML = contentHTML;
+    details.innerHTML = detailsHTML;
+    
+    // Append children
     card.appendChild(content);
     card.appendChild(details);
     
-    // Click handler
+    // Add click handler
     card.addEventListener('click', (e) => {
-        if (e.target.closest('.details')) return;
+        if (e.target.closest('.details') || isRendering) return;
         
-        // Close other cards
-        if (activeCard && activeCard !== card) {
-            activeCard.classList.remove('expanded');
-        }
+        // Set rendering flag
+        isRendering = true;
         
-        // Toggle current card
-        card.classList.toggle('expanded');
-        activeCard = card.classList.contains('expanded') ? card : null;
+        // Use requestAnimationFrame for smooth transitions
+        requestAnimationFrame(() => {
+            // Close other cards
+            if (activeCard && activeCard !== card) {
+                activeCard.classList.remove('expanded');
+            }
+            
+            // Toggle current card
+            card.classList.toggle('expanded');
+            activeCard = card.classList.contains('expanded') ? card : null;
+            
+            // Clear rendering flag
+            isRendering = false;
+        });
     });
     
     return card;
 }
 
-// Render cards
+// Render cards with optimizations
 function renderCards(searchTerm = '') {
+    // Set rendering flag
+    isRendering = true;
+    
+    // Clear container and active card
     cardsContainer.innerHTML = '';
     activeCard = null;
     
+    // Create fragment for batch update
     const fragment = document.createDocumentFragment();
     let hasResults = false;
     
+    // Add matching cards to fragment
     content.forEach(category => {
         category.items.forEach(item => {
             if (matchesSearch(item, searchTerm)) {
@@ -80,34 +106,53 @@ function renderCards(searchTerm = '') {
         });
     });
     
-    cardsContainer.appendChild(fragment);
-    cardsContainer.classList.toggle('no-results', !hasResults);
+    // Use requestAnimationFrame for smooth updates
+    requestAnimationFrame(() => {
+        // Single DOM update
+        cardsContainer.appendChild(fragment);
+        cardsContainer.classList.toggle('no-results', !hasResults);
+        
+        // Clear rendering flag
+        isRendering = false;
+    });
 }
 
-// Search helper
+// Search helper with optimizations
 function matchesSearch(item, searchTerm) {
     if (!searchTerm) return true;
     
+    // Convert to lowercase once
     searchTerm = searchTerm.toLowerCase();
-    return (
-        item.name.toLowerCase().includes(searchTerm) ||
-        item.description.toLowerCase().includes(searchTerm) ||
-        item.tags.some(tag => tag.toLowerCase().includes(searchTerm)) ||
-        item.details.whyDesirable.toLowerCase().includes(searchTerm) ||
-        item.details.examples.some(example => {
-            if (typeof example === 'string') {
-                return example.toLowerCase().includes(searchTerm);
-            }
-            return (
-                example.film.toLowerCase().includes(searchTerm) ||
-                example.scene.toLowerCase().includes(searchTerm) ||
-                example.description.toLowerCase().includes(searchTerm)
-            );
-        })
-    );
+    const name = item.name.toLowerCase();
+    const description = item.description.toLowerCase();
+    const whyDesirable = item.details.whyDesirable.toLowerCase();
+    
+    // Check each field
+    if (name.includes(searchTerm) || 
+        description.includes(searchTerm) || 
+        whyDesirable.includes(searchTerm)) {
+        return true;
+    }
+    
+    // Check tags
+    if (item.tags.some(tag => tag.toLowerCase().includes(searchTerm))) {
+        return true;
+    }
+    
+    // Check examples
+    return item.details.examples.some(example => {
+        if (typeof example === 'string') {
+            return example.toLowerCase().includes(searchTerm);
+        }
+        return (
+            example.film.toLowerCase().includes(searchTerm) ||
+            example.scene.toLowerCase().includes(searchTerm) ||
+            example.description.toLowerCase().includes(searchTerm)
+        );
+    });
 }
 
-// Initialize
+// Initialize with optimizations
 document.addEventListener('DOMContentLoaded', () => {
     // Force reflow to prevent rendering issues
     document.body.style.transform = 'translateZ(0)';
@@ -115,12 +160,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial render
     renderCards();
     
-    // Search handler
+    // Debounced search handler
     let searchTimeout;
     searchInput.addEventListener('input', () => {
+        // Clear previous timeout
         clearTimeout(searchTimeout);
+        
+        // Set new timeout
         searchTimeout = setTimeout(() => {
-            renderCards(searchInput.value);
+            // Only render if not already rendering
+            if (!isRendering) {
+                renderCards(searchInput.value);
+            }
         }, 300);
     });
+    
+    // Remove loading class
+    document.body.classList.remove('js-loading');
 });
