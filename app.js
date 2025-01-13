@@ -3,6 +3,7 @@ const searchInput = document.getElementById('search');
 const cardsContainer = document.getElementById('cardsContainer');
 let activeCard = null;
 let isRendering = false;
+let renderTimeout = null;
 
 // Handle clicks outside expanded cards
 document.addEventListener('click', (e) => {
@@ -57,27 +58,36 @@ function createCard(item) {
     card.appendChild(content);
     card.appendChild(details);
     
-    // Add click handler
+    // Add click handler with debounce
+    let clickTimeout;
     card.addEventListener('click', (e) => {
         if (e.target.closest('.details') || isRendering) return;
         
-        // Set rendering flag
-        isRendering = true;
+        // Clear previous timeout
+        clearTimeout(clickTimeout);
         
-        // Use requestAnimationFrame for smooth transitions
-        requestAnimationFrame(() => {
-            // Close other cards
-            if (activeCard && activeCard !== card) {
-                activeCard.classList.remove('expanded');
-            }
+        // Set new timeout
+        clickTimeout = setTimeout(() => {
+            // Set rendering flag
+            isRendering = true;
             
-            // Toggle current card
-            card.classList.toggle('expanded');
-            activeCard = card.classList.contains('expanded') ? card : null;
-            
-            // Clear rendering flag
-            isRendering = false;
-        });
+            // Use requestAnimationFrame for smooth transitions
+            requestAnimationFrame(() => {
+                // Close other cards first
+                if (activeCard && activeCard !== card) {
+                    activeCard.classList.remove('expanded');
+                }
+                
+                // Wait for next frame to toggle current card
+                requestAnimationFrame(() => {
+                    card.classList.toggle('expanded');
+                    activeCard = card.classList.contains('expanded') ? card : null;
+                    
+                    // Clear rendering flag
+                    isRendering = false;
+                });
+            });
+        }, 50); // Small delay to prevent double-clicks
     });
     
     return card;
@@ -85,36 +95,45 @@ function createCard(item) {
 
 // Render cards with optimizations
 function renderCards(searchTerm = '') {
-    // Set rendering flag
-    isRendering = true;
+    // Clear previous render timeout
+    clearTimeout(renderTimeout);
     
-    // Clear container and active card
-    cardsContainer.innerHTML = '';
-    activeCard = null;
-    
-    // Create fragment for batch update
-    const fragment = document.createDocumentFragment();
-    let hasResults = false;
-    
-    // Add matching cards to fragment
-    content.forEach(category => {
-        category.items.forEach(item => {
-            if (matchesSearch(item, searchTerm)) {
-                hasResults = true;
-                fragment.appendChild(createCard(item));
-            }
-        });
-    });
-    
-    // Use requestAnimationFrame for smooth updates
-    requestAnimationFrame(() => {
-        // Single DOM update
-        cardsContainer.appendChild(fragment);
-        cardsContainer.classList.toggle('no-results', !hasResults);
+    // Set new timeout to debounce renders
+    renderTimeout = setTimeout(() => {
+        // Set rendering flag
+        isRendering = true;
         
-        // Clear rendering flag
-        isRendering = false;
-    });
+        // Clear container and active card
+        cardsContainer.innerHTML = '';
+        activeCard = null;
+        
+        // Create fragment for batch update
+        const fragment = document.createDocumentFragment();
+        let hasResults = false;
+        
+        // Convert search term once
+        const normalizedSearch = searchTerm.toLowerCase();
+        
+        // Add matching cards to fragment
+        content.forEach(category => {
+            category.items.forEach(item => {
+                if (matchesSearch(item, normalizedSearch)) {
+                    hasResults = true;
+                    fragment.appendChild(createCard(item));
+                }
+            });
+        });
+        
+        // Use requestAnimationFrame for smooth updates
+        requestAnimationFrame(() => {
+            // Single DOM update
+            cardsContainer.appendChild(fragment);
+            cardsContainer.classList.toggle('no-results', !hasResults);
+            
+            // Clear rendering flag
+            isRendering = false;
+        });
+    }, 100); // Small delay to batch updates
 }
 
 // Search helper with optimizations
@@ -122,7 +141,6 @@ function matchesSearch(item, searchTerm) {
     if (!searchTerm) return true;
     
     // Convert to lowercase once
-    searchTerm = searchTerm.toLowerCase();
     const name = item.name.toLowerCase();
     const description = item.description.toLowerCase();
     const whyDesirable = item.details.whyDesirable.toLowerCase();
