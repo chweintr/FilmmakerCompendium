@@ -516,7 +516,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <p>${item.details.whyDesirable}</p>
                                 <h4>Examples</h4>
                                 <ul>
-                                    ${item.details.examples.map(example => `<li>${example}</li>`).join("")}
+                                    ${item.details.examples.map(example => 
+                                        typeof example === 'string'
+                                            ? `<li>${example}</li>`
+                                            : `<li><strong>${example.film}</strong> - ${example.scene}: ${example.description}</li>`
+                                    ).join('')}
                                 </ul>
                             </div>
                         </div>
@@ -641,6 +645,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
 
                 if (results.length > 0) {
+                    searchResults.innerHTML = "";
                     results.forEach(result => {
                         const resultCard = document.createElement("div");
                         resultCard.className = "card";
@@ -658,7 +663,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                     <p>${result.details.whyDesirable}</p>
                                     <h4>Examples</h4>
                                     <ul>
-                                        ${result.details.examples.map(example => `<li>${example}</li>`).join("")}
+                                        ${result.details.examples.map(example => 
+                                            typeof example === 'string'
+                                                ? `<li>${example}</li>`
+                                                : `<li><strong>${example.film}</strong> - ${example.scene}: ${example.description}</li>`
+                                        ).join('')}
                                     </ul>
                                 </div>
                             </div>
