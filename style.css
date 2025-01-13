@@ -81,15 +81,28 @@ h1 {
     position: relative;
     /* Ensure card is above others when expanded */
     z-index: 1;
+    /* Prevent text rendering issues */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.card-main {
+    position: relative;
+    z-index: 2;
+}
+
+.card-title {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+    /* Prevent text rendering issues */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow: none;
 }
 
 .card.expanded {
     z-index: 3;
-}
-
-.card h3 {
-    color: #2c3e50;
-    margin-bottom: 10px;
 }
 
 .description {
